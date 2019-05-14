@@ -1,37 +1,65 @@
-## A brief introduction
+## Introduction
 
-- This was initially written by [Jérôme Petazzoni](https://twitter.com/jpetazzo) to support in-person,
-  instructor-led workshops and tutorials
-  
-- Credit is also due to [multiple contributors](https://@@GITREPO@@/graphs/contributors) — thank you!
-
-- You can also follow along on your own, at your own pace
+- This presentation was created by [Ant Weiss](https://twitter.com/antweiss) to support 
+  instructor-led workshops.
 
 - We included as much information as possible in these slides
 
-- We recommend having a mentor to help you ...
+- Most of the information this workshop is based on is public knowledge and can also be accessed through [Istio official documents and tutorials](https://istio.io/docs)
 
-- ... Or be comfortable spending some time reading the Kubernetes [documentation](https://kubernetes.io/docs/) ...
+![image alt ><](images/istio.png)
+---
 
-- ... And looking for answers on [StackOverflow](http://stackoverflow.com/questions/tagged/kubernetes) and other outlets
+## Training environment
+
+- This is a hands-on training with exercises and examples
+
+- We assume that you have access to a Kubernetes cluster
+
+- The training labs for today's session were generously sponsored by [Strigo](https://strigo.io)
+- We will be using [microk8s](https://microk8s.io) to get these clusters 
+
+- Haven't tried microk8s yet?! You're in for a treat!
 
 ---
 
-class: self-paced
+## Getting Istio
 
-## Hands on, you shall practice
+- Get the source code and the slides for this workshop:
 
-- Nobody ever became a Jedi by spending their lives reading Wookiepedia
+.exercise[
 
-- Likewise, it will take more than merely *reading* these slides
-  to make you an expert
+- On your Strigo VM:
 
-- These slides include *tons* of exercises and examples
+  ```bash
+  git clone https://github.com/otomato-gh/istio.workshop.git 
+  cd istio.workshop
+  ./prepare_vms/setup_microk8s.sh
+  ```
 
-- They assume that you have access to a Kubernetes cluster
+]
 
-- If you are attending a workshop or tutorial:
-  <br/>you will be given specific instructions to access your cluster
+- This will install a microk8s single-node cluster with Istio
 
-- If you are doing this on your own:
-  <br/>the first chapter will give you various options to get your own cluster
+---
+
+### A few words about microk8s
+
+```bash
+sudo snap install microk8s --classic                                    
+sudo snap install kubectl --classic                                     
+microk8s.start                                                          
+microk8s.enable istio                                                   
+```
+
+- Single node Kubernetes done right
+
+- Zero-ops k8s on just about any Linux box
+
+- Many popular k8s add-ons can be enabled:
+  - metrics-server
+  - kube-dashboard
+  - and of course: Istio
+  - For more:  `microk8s.enable --help`
+
+
