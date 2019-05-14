@@ -8,6 +8,7 @@ gitrepo: github.com/otomato-gh/istio.workshop
 slides: https://devopstrain.pro/istio
 
 chapters:
+#- istio/layout.md
 - istio/title.md
 - logistics.md
 - istio/intro.md

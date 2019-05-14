@@ -97,10 +97,10 @@ def generatefromyaml(manifest, filename):
 
     # Insert build info. This is super hackish.
 
-    markdown = markdown.replace(
-        ".debug[",
-        ".debug[\n```\n{}\n```\n\nThese slides have been built from commit: {}\n\n".format(dirtyfiles, commit),
-        1)
+    # markdown = markdown.replace(
+    #     ".debug[",
+    #     ".debug[These slides have been built from commit: {}\n\n".format(commit),
+    #     1)
 
     markdown = markdown.replace("@@TITLE@@", manifest["title"].replace("\n", "<br/>"))
 
