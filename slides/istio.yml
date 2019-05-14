@@ -1,0 +1,13 @@
+title: |
+  Deploy Microservices like a Ninja iwth Istio Service Mesh
+chat: "[Slack](https://join.slack.com/t/otomato-flux/shared_invite/enQtMzE5NjY1Njk4MzM5LWRkNmI5NGI5YjY0MWVlNjA0ZjdkMjRiMjlkZDY5ZTI4NGE3MWQ1M2E0ZTJlNjA2YTQ4ZjdmNTA4ZjRmODY1ZjY)"
+#chat: "[Gitter](https://gitter.im/jpetazzo/workshop-yyyymmdd-city)"
+
+gitrepo: github.com/otomato-gh/istio.workshop
+
+slides: https://devopstrain.pro/istio
+
+chapters:
+- istio/title.md
+- logistics.md
+- istio/intro.md
