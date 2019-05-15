@@ -1,11 +1,11 @@
+class: pic
 # What is a Service Mesh?
-
-![image alt ><](https://blog.twitter.com/content/dam/blog-twitter/archive/observability_attwitter95.thumb.1280.1280.png)
-
-*Twitter microservices having a little chat*
+![death star](images/observability_attwitter.png)
+<p align="center">
+*Twitter microservices having a little chat* </p>
 ---
 
-# What is a Service Mesh?
+## What is a Service Mesh?
 
 The term service mesh is used to describe the network of microservices that make up distributed buisness applications and the interactions between these services.
 
