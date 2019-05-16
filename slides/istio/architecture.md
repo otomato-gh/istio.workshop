@@ -22,6 +22,20 @@ Istio leverages Envoy’s many built-in features, for example:
 
 ---
 
+## The Sidecar Pattern
+- The 'sidecar' is a an assistant container in the pod
+
+- Think Batman's Robin
+
+- It takes on some responsibility that the main container can't be bothered with
+  
+  - Log shipping
+
+  - Data preparation
+
+  - Or in our case : networking!
+---
+
 ## Mixer
  
  Mixer is a platform-independent component. 

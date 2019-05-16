@@ -148,6 +148,14 @@ name: toc-chapter-2
 - [The Demo Installation](#toc-the-demo-installation)
 
 .debug[(auto-generated TOC)]
+---
+name: toc-chapter-3
+
+## Chapter 3
+
+- [Deploying with Istio](#toc-deploying-with-istio)
+
+.debug[(auto-generated TOC)]
 
 
 
@@ -354,6 +362,21 @@ Istio leverages Envoy’s many built-in features, for example:
 .debug[[istio/architecture.md](https://github.com/otomato-gh/istio.workshop/tree/master/slides/istio/architecture.md)]
 ---
 
+## The Sidecar Pattern
+- The 'sidecar' is a an assistant container in the pod
+
+- Think Batman's Robin
+
+- It takes on some responsibility that the main container can't be bothered with
+  
+  - Log shipping
+
+  - Data preparation
+
+  - Or in our case : networking!
+.debug[[istio/architecture.md](https://github.com/otomato-gh/istio.workshop/tree/master/slides/istio/architecture.md)]
+---
+
 ## Mixer
  
  Mixer is a platform-independent component. 
@@ -503,7 +526,7 @@ The Demo Installation
 |
 [Back to table of contents](#toc-chapter-2)
 |
-[Next section](#toc-)
+[Next section](#toc-deploying-with-istio)
 ]
 
 .debug[(automatically generated title slide)]
@@ -525,7 +548,7 @@ The Demo Installation
 
 .debug[[istio/demoinstall.md](https://github.com/otomato-gh/istio.workshop/tree/master/slides/istio/demoinstall.md)]
 ---
-## The Demo Installation
+## The mixer pods
 
 - We can see pilot, galley, citadel... But where is the mixer?
 
@@ -539,9 +562,159 @@ kubectl get pod -n istio-system -l=istio=mixer
 
 - Therefore - 2 pods.
 
+.debug[[istio/demoinstall.md](https://github.com/otomato-gh/istio.workshop/tree/master/slides/istio/demoinstall.md)]
+---
+## The sidecars
+
+- Now, where are the Envoys?
+
+- Let's look at the Pilot pod:
+
+.exercise[
+```bash
+kubectl describe pod -n istio-system -l istio=pilot
+```
+]
+--
+
+```
+Containers:
+  discovery:
+...
+    Image:         docker.io/istio/pilot:1.0.5
+...
+  istio-proxy:
+...
+    Image:         docker.io/istio/proxyv2:1.0.5
+```
+.debug[[istio/demoinstall.md](https://github.com/otomato-gh/istio.workshop/tree/master/slides/istio/demoinstall.md)]
+---
+
+### The sidecars
+
+- But how do the sidecars get into our own pods?
+
+- Let's deploy a service.
+
+.exercise[
+```bash
+kubectl create deployment httpbin --image=kennethreitz/httpbin
+```
+]
+
+- And look at the pod: 
+
+.exercise[
+```bash
+kubectl describe pod -l=app=httpbin
+```
+]
+
+- There's only one container. The sidecar proxy isn't there...
+
+.debug[[istio/demoinstall.md](https://github.com/otomato-gh/istio.workshop/tree/master/slides/istio/demoinstall.md)]
+---
+
+## The sidecar injection
+
+- How do we inject the proxy into our pod?
+
+- Do we need to edit our deployment ourselves?!
+
+- There should be some magic somewhere!
+
+- Remember when we looked at Istio pods there was that *sidecar-injector* pod?
+
+- So why didn't it work?
+
+.debug[[istio/demoinstall.md](https://github.com/otomato-gh/istio.workshop/tree/master/slides/istio/demoinstall.md)]
+---
+
+## The sidecar injection
+
+From Istio docs:
+"When you deploy your application using kubectl apply, the Istio sidecar injector will automatically inject Envoy containers into your application pods if they are started in namespaces labeled with **istio-injection=enabled**."
+
+- Let's label our namespace and redeploy:
+
+.exercise[
+```bash
+kubectl label namespace default istio-injection=enabled
+kubectl delete pod -l=app=httpbin
+```
+]
+--
+
+- Recreating that pod took a whole lotta time, didn't it?!
+
+.debug[[istio/demoinstall.md](https://github.com/otomato-gh/istio.workshop/tree/master/slides/istio/demoinstall.md)]
+---
+
+## The sidecar injection
+
+- Look at our new pod:
+
+.exercise[
+```bash
+kubectl describe pod -l=app=httpbin
+```
+]
+
+- Now we have two containers and there was an [init-container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)!
+
+- The istio-init container is run before the other containers are started and it's responsible for setting up the iptables rules so that all inbound/outbound traffic will go through Envoy
+
+  - For a deep dive into what istio-init does - read this [blog post](https://medium.com/faun/understanding-how-envoy-sidecar-intercept-and-route-traffic-in-istio-service-mesh-20fea2a78833)
 
 
-.debug[[istio/demoinstall.md](https://github.com/otomato-gh/istio.workshop/tree/master/slides/istio/demoinstall.md)]</textarea>
+.debug[[istio/demoinstall.md](https://github.com/otomato-gh/istio.workshop/tree/master/slides/istio/demoinstall.md)]
+---
+
+class: pic
+
+.interstitial[![Image separating from the next chapter](https://images.pexels.com/photos/185799/pexels-photo-185799.jpeg)]
+
+---
+
+name: toc-deploying-with-istio
+class: title
+
+Deploying with Istio
+
+.nav[
+[Previous section](#toc-the-demo-installation)
+|
+[Back to table of contents](#toc-chapter-3)
+|
+[Next section](#toc-)
+]
+
+.debug[(automatically generated title slide)]
+
+---
+# Deploying with Istio
+
+- Our purpose today is to learn how Istio allows us to implement *progressive delivery* techniques
+
+- We'll do that by deploying a demo application - an *alphabeth* system :)
+
+- It's just a frontend service that speaks to 2 backends (aleph and beth)
+
+- All the services are bare-bones Python Flask apps
+ 
+.debug[[istio/demoapp.md](https://github.com/otomato-gh/istio.workshop/tree/master/slides/istio/demoapp.md)]
+---
+
+class: pic
+## The Sample App 
+![diagram](images/demoapp.png)
+
+.debug[[istio/demoapp.md](https://github.com/otomato-gh/istio.workshop/tree/master/slides/istio/demoapp.md)]
+---
+```
+Invalid chapter: 
+```
+</textarea>
     <script src="remark.min.js" type="text/javascript">
     </script>
     <script type="text/javascript">

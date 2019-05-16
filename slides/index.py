@@ -10,16 +10,7 @@ TEMPLATE="""<html>
   <div class="main">
     <table>
       <tr><td class="header" colspan="3">{{ title }}</td></tr>
-      <tr><td class="details" colspan="3">Note: while some workshops are delivered in French, slides are always in English.</td></tr>
-
-      <tr><td class="title" colspan="3">Free video of our latest workshop</td></tr>
-
-      <tr>
-      	<td>Getting Started With Kubernetes and Container Orchestration</td>
-      	<td><a class="slides" href="https://qconuk2019.container.training" /></td>
-      	<td><a class="video" href="https://www.youtube.com/playlist?list=PLBAFXs0YjviJwCoxSUkUPhsSxDJzpZbJd" /></td>
-      </tr>
-      <tr>
+       <tr>
         <td class="details">This is a live recording of a 1-day workshop that took place at QCON London in March 2019.</td>
       </tr>
       <tr>
@@ -117,7 +108,7 @@ TEMPLATE="""<html>
 
       <tr>
         <td class="footer">
-          Maintained by Jérôme Petazzoni (<a href="https://twitter.com/jpetazzo">@jpetazzo</a>) and <a href="https://github.com/jpetazzo/container.training/graphs/contributors">contributors</a>.
+          Maintained by Ant Weiss (<a href="https://twitter.com/antweiss">@jpetazzo</a>) and <a href="https://github.com/jpetazzo/container.training/graphs/contributors">contributors</a>.
         </td>
       </tr>
     </table>

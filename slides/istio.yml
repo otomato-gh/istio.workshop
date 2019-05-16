@@ -17,3 +17,6 @@ chapters:
 - - istio/architecture.md
   - istio/exploreonk8s.md
   - istio/demoinstall.md
+- - istio/demoapp.md
+  - istio/concepts.md
+  
