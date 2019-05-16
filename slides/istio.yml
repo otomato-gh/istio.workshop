@@ -14,3 +14,6 @@ chapters:
 - istio/intro.md
 - istio/toc.md
 - - istio/servicemesh.md
+- - istio/architecture.md
+  - istio/exploreonk8s.md
+  - istio/demoinstall.md
