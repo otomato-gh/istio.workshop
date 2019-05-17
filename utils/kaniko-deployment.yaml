@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: kaniko
+  name: kaniko
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: kaniko
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: kaniko
+    spec:
+      containers:
+      - command:
+        - /busybox/sh
+        - -c
+        - sleep 100000
+        image: gcr.io/kaniko-project/executor:debug
+        imagePullPolicy: IfNotPresent
+        name: kaniko
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /app
+          name: app
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: app
+        hostPath:
+          path: /root/app
+          type: Directory
+  
