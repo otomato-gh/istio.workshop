@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: beth
-        image: localhost:32000/beth:0.3
+        image: localhost:32000/beth:0.1
         imagePullPolicy: Always
         ports:
         - containerPort: 80
