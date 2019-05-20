@@ -3,12 +3,12 @@ version: "3"
 services:
   front:
     build: front
-    image: ${REGISTRY}/front:${TAG-0.3}
+    image: ${REGISTRY}/front:${TAG-0.1}
   aleph:
     build: aleph
-    image: ${REGISTRY}/aleph:${TAG-0.3}
+    image: ${REGISTRY}/aleph:${TAG-0.1}
   beth:
     build: beth
-    image: ${REGISTRY}/beth:${TAG-0.3}
+    image: ${REGISTRY}/beth:${TAG-0.1}
   mongo:
     image: mongo
