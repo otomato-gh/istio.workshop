@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: aleph
+  labels:
+    app: aleph
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: aleph
+        version: v02
+    spec:
+      containers:
+      - name: aleph
+        image: {{ .Values.registry }}/aleph:{{ .Values.version }}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80

@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: beth
+  labels:
+    app: beth
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: beth
+        version: v02
+    spec:
+      containers:
+      - name: beth
+        image: {{ .Values.registry }}/beth:{{ .Values.version }}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
