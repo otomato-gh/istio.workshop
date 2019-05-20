@@ -83,3 +83,20 @@ kubectl get svc grafana  -n istio-system  -o jsonpath='{ .spec.ports[0].nodePort
 - Browse to http://your-node-ip/service-port
     
 ]
+
+---
+
+## Detecting a problem
+.exercise[
+
+- Generate some traffic by reloading `front` in your browser.
+
+- Look at the traces in Jaeger
+
+- Is one of the backends slower than the other one?
+
+]
+
+--
+
+- Looks like `beth` is taking too slow to respond. 
