@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: aleph
-        image: otomato/istio-games-aleph:0.4
+        image: localhost:32000/aleph:0.4
         imagePullPolicy: Always
         ports:
         - containerPort: 80

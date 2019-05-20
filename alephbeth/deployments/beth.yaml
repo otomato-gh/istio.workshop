@@ -1,0 +1,38 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: beth
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: beth
+        version: v01
+    spec:
+      containers:
+      - name: beth
+        image: localhost:32000/beth:0.3
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: beth
+  labels:
+    app: beth
+spec:
+  ports:
+    - name: http-beth 
+      port: 80
+      protocol: TCP
+      targetPort: 80
+    - name: prometheus
+      port: 8000
+      protocol: TCP
+      targetPort: 8000
+  selector:
+      app: beth
