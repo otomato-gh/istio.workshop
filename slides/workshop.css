@@ -176,6 +176,15 @@ div img {
   background-repeat: no-repeat;
   background-position: left;
 }
+.trivia {
+  background-image: url("images/question.png");
+  background-size: 1.5em;
+  padding-left: 2em;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  background-repeat: no-repeat;
+  background-position: left;
+}
 .exercise {
   background-color: #eee;
   background-image: url("images/keyboard.png");

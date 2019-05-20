@@ -18,5 +18,5 @@ chapters:
   - istio/exploreonk8s.md
   - istio/demoinstall.md
 - - istio/demoapp.md
-  - istio/concepts.md
+  - istio/observability.md
   

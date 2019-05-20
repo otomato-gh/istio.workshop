@@ -28,6 +28,7 @@ def healthz():
 
 @app.route('/version')
 def version():
+    time.sleep(5)
     return app.config['SWAGGER_INFO']['version']
 
 @app.route('/name')

@@ -194,13 +194,13 @@ Let's have a look at the `docker-compose.yaml` file while this is building and p
 services:
   front:
     build: front
-    image: ${REGISTRY}/istio-games-front:${TAG-0.3}  
+    image: ${REGISTRY}/front:${TAG-0.3}  
   aleph:
     build: aleph
-    image: ${REGISTRY}/istio-games-aleph:${TAG-0.3}
+    image: ${REGISTRY}/aleph:${TAG-0.3}
   beth:
     build: beth
-    image: ${REGISTRY}/istio-games-beth:${TAG-0.3}
+    image: ${REGISTRY}/beth:${TAG-0.3}
   mongo:
     image: mongo
 ```
@@ -211,22 +211,18 @@ services:
 
 - We can now deploy our code 
 
+- We will create a new namespace 'staging' and enable istio sidecar injection on it
+
 .exercise[
 
-- Deploy `redis`:
+- We have kubernetes yamls ready for the first version of our app in `deployments` dir:
   ```bash
-  kubectl run redis --image=redis
+  cd deployments
+  kubectl create ns staging
+  kubectl label ns staging istio-injection=enabled
+  kubectl apply -f aleph.yaml  -f front.yaml -f beth.yaml  -n staging 
   ```
-
-- Deploy everything else:
-  ```bash
-    for SERVICE in hasher rng webui worker; do
-      kubectl run $SERVICE --image=$REGISTRY/$SERVICE
-    done
-  ```
-
 ]
-
 ---
 
 ## Is this working?
@@ -239,106 +235,36 @@ services:
 
 - Look at some logs:
   ```bash
-  kubectl logs deploy/rng
-  kubectl logs deploy/worker
+  kubectl logs -n staging deploy/front
   ```
-
-]
-
---
-
-🤔 `rng` is fine ... But not `worker`.
-
---
-
-💡 Oh right! We forgot to `expose`.
-
----
-
-# Exposing services internally 
-
-- Three deployments need to be reachable by others: `hasher`, `redis`, `rng`
-
-- `worker` doesn't need to be exposed
-
-- `webui` will be dealt with later
-
-.exercise[
-
-- Expose each deployment, specifying the right port:
+- Hmm, that didn't work. We need to specify the container name!
   ```bash
-  kubectl expose deployment redis --port 6379
-  kubectl expose deployment rng --port 80
-  kubectl expose deployment hasher --port 80
+  kubectl logs -n staging deploy/front front
+  kubectl logs -n staging deploy/front istio-proxy
   ```
-
-]
-
----
-
-## Is this working yet?
-
-- The `worker` has an infinite loop, that retries 10 seconds after an error
-
-.exercise[
-
-- Stream the worker's logs:
-  ```bash
-  kubectl logs deploy/worker --follow
-  ```
-
-  (Give it about 10 seconds to recover)
-
-<!--
-```keys
-^C
-```
--->
-
-]
-
---
-
-We should now see the `worker`, well, working happily.
-
----
-
-# Exposing services for external access
-
-- Now we would like to access the Web UI
-
-- We will expose it with a `NodePort`
-
-  (just like we did for the registry)
-
-.exercise[
-
-- Create a `NodePort` service for the Web UI:
-  ```bash
-  kubectl expose deploy/webui --type=NodePort --port=80
-  ```
-
-- Check the port that was allocated:
-  ```bash
-  kubectl get svc
-  ```
-
 ]
 
 ---
 
 ## Accessing the web UI
 
-- We can now connect to *any node*, on the allocated node port, to view the web UI
+- Our `front` service is exposed on a NodePort.
+
+- Let's look at it and see if it works:
 
 .exercise[
 
+- Get the port of the `front` service
+
+```bash
+kubectl get svc -n staging front -o=jsonpath='{ .spec.ports[0].nodePort }{"\n"}'
+```
 - Open the web UI in your browser (http://node-ip-address:3xxxx/)
 
-<!-- ```open http://node1:3xxxx/``` -->
+<!-- ```open http://node-ip-address:3xxxx/``` -->
 
 ]
 
 --
 
-*Alright, we're back to where we started, when we were running on a single node!*
+*You should see the frontend application showing the versions of both its backends*
