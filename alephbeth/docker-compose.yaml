@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  front:
+    build: front
+    image: ${REGISTRY}/front:${TAG-0.3}
+  aleph:
+    build: aleph
+    image: ${REGISTRY}/aleph:${TAG-0.3}
+  beth:
+    build: beth
+    image: ${REGISTRY}/beth:${TAG-0.3}
+  mongo:
+    image: mongo
