@@ -126,3 +126,19 @@ kubectl describe pod -l=app=httpbin
 
   - For a deep dive into what istio-init does - read this [blog post](https://medium.com/faun/understanding-how-envoy-sidecar-intercept-and-route-traffic-in-istio-service-mesh-20fea2a78833)
 
+---
+
+## Let's cleanup the default namespace
+
+- We just learned that automated istio-proxy injection is enabled per namespace.
+
+- We will be using a special namespace for our deployments today.
+
+- We don't want istio injection enabled on our `default` namespace, so let's clean it up:
+
+.exercise[
+```bash
+kubectl label ns default --overwrite  istio-injection=disabled
+```
+]
+

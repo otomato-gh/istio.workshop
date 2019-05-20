@@ -34,7 +34,7 @@ In this part, we will:
 
 ## The plan
 
-- Build in the cluster using  `kaniko`)
+- Build our images using Docker
 
 - Tag images so that they are named `$REGISTRY/servicename`
 
@@ -75,45 +75,27 @@ In this part, we will:
   - or with the Engine flag `--insecure-registry`
 
 - Our strategy: publish the registry container on a NodePort,
-  <br/>so that it's available through `127.0.0.1:xxxxx` on each node
+  <br/>so that it's available through `127.0.0.1:32000` on our single node
+  
+.warning[We're choosing port 32000 because it's the default port for an insecure registry on microk8s]
 
 ---
 
 # Deploying a self-hosted registry
 
-- We will deploy a registry container, and expose it with a NodePort
+- We will deploy a registry container, and expose it with a NodePort 32000
+
 
 .exercise[
 
 - Create the registry service:
   ```bash
-  kubectl run registry --image=registry:2
+  kubectl create deployment registry --image=registry:2
   ```
 
 - Expose it on a NodePort:
   ```bash
-  kubectl expose deploy/registry --port=5000 --type=NodePort
-  ```
-
-]
-
----
-
-## Connecting to our registry
-
-- We need to find out which port has been allocated
-
-.exercise[
-
-- View the service details:
-  ```bash
-  kubectl describe svc/registry
-  ```
-
-- Get the port number programmatically:
-  ```bash
-  NODEPORT=$(kubectl get svc/registry -o json | jq .spec.ports[0].nodePort)
-  REGISTRY=127.0.0.1:$NODEPORT
+  kubectl create service nodeport registry --tcp=5000 --node-port=32000
   ```
 
 ]
@@ -128,6 +110,7 @@ In this part, we will:
 
 - View the repositories currently held in our registry:
   ```bash
+  REGISTRY=localhost:32000
   curl $REGISTRY/v2/_catalog
   ```
 
@@ -226,7 +209,7 @@ services:
 
 ## Deploying all the things
 
-- We can now deploy our code (as well as a redis instance)
+- We can now deploy our code 
 
 .exercise[
 
