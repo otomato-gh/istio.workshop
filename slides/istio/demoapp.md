@@ -189,46 +189,38 @@ The curl command should now output:
 
 .exercise[
 
-- Go to the `stacks` directory:
+- Go to the `alephbeth` directory:
   ```bash
-  cd ~/container.training/stacks
+  cd ~/istio.workshop/alephbeth
   ```
 
 - Build and push the images:
   ```bash
   export REGISTRY
-  docker-compose -f dockercoins.yml build
-  docker-compose -f dockercoins.yml push
+  docker-compose build
+  docker-compose push
   ```
 
 ]
 
-Let's have a look at the `dockercoins.yml` file while this is building and pushing.
+Let's have a look at the `docker-compose.yaml` file while this is building and pushing.
 
 ---
 
 ```yaml
-version: "3"
-
 services:
-  rng:
-    build: dockercoins/rng
-    image: ${REGISTRY-127.0.0.1:5000}/rng:${TAG-latest}
-    deploy:
-      mode: global
-  ...
-  redis:
-    image: redis
-  ...
-  worker:
-    build: dockercoins/worker
-    image: ${REGISTRY-127.0.0.1:5000}/worker:${TAG-latest}
-    ...
-    deploy:
-      replicas: 10
+  front:
+    build: front
+    image: ${REGISTRY}/istio-games-front:${TAG-0.3}  
+  aleph:
+    build: aleph
+    image: ${REGISTRY}/istio-games-aleph:${TAG-0.3}
+  beth:
+    build: beth
+    image: ${REGISTRY}/istio-games-beth:${TAG-0.3}
+  mongo:
+    image: mongo
 ```
-
-.warning[Just in case you were wondering ... Docker "services" are not Kubernetes "services".]
 
 ---
 
