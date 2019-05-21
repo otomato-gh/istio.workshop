@@ -79,24 +79,7 @@ kubectl get svc grafana  -n istio-system  -o jsonpath='{ .spec.ports[0].nodePort
 ```
 
 - Do the same for `servicegraph` and `tracing` services
-
-- Browse to http://your-node-ip/service-port
+- Browse to http://your-node-ip/service-port (for servicegraph add /force/forcegraph.html)
     
 ]
 
----
-
-## Detecting a problem
-.exercise[
-
-- Generate some traffic by reloading `front` in your browser.
-
-- Look at the traces in Jaeger
-
-- Is one of the backends slower than the other one?
-
-]
-
---
-
-- Looks like `beth` is taking too slow to respond. 

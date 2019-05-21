@@ -9,7 +9,7 @@ app.register_blueprint(swagger)
 # required. See http://swagger.io/specification/#infoObject for details.
 app.config['SWAGGER_INFO'] = {
     'title': 'Otomato Beth Service',
-    'version': '0.3',
+    'version': '0.1',
     'description': 'return some data',
     'termsOfService': 'my terms of service',
     'contact': {
@@ -28,7 +28,9 @@ def healthz():
 
 @app.route('/version')
 def version():
-    time.sleep(5)
+# a timeout to test DB slowness
+# TODO: remove this before production
+    time.sleep(2)
     return app.config['SWAGGER_INFO']['version']
 
 @app.route('/name')

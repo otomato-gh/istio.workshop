@@ -19,4 +19,7 @@ chapters:
   - istio/demoinstall.md
 - - istio/demoapp.md
   - istio/observability.md
+  - istio/grafana.md
+  - istio/tracing.md
+- - istio/deployments.md
   
