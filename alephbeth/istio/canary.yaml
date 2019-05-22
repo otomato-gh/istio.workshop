@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: beth
+  namespace: games
+spec:
+  hosts:
+  - beth
+  http:
+  - route:
+    - destination:
+        host: beth
+        port:
+          number: 80
+        subset: v01
+      weight: 99
+    - destination:
+        host: beth
+        port:
+          number: 80
+        subset: v01
+      weight: 1

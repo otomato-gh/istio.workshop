@@ -107,7 +107,7 @@ Our services need to conform to contracts and protocols but expect the unexpecte
 
 A network of lightweight, centrally configurable proxies taking care of inter-service traffic.
 
-The puprpose of these proxies is to solve the application networking challenges.
+The purpose of these proxies is to solve the application networking challenges.
 
 They make application networking:
 

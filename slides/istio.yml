@@ -26,4 +26,6 @@ chapters:
   - istio/trafficmgmt.md
   - istio/ourappwithistio.md
   - istio/darklaunch.md
+  - istio/mirroring.md
+  - istio/canary.md
   

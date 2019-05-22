@@ -23,3 +23,33 @@ version: v03
 kubectl apply -f  deployments/beth-v03.yaml
 ```
 ]
+
+---
+
+## Did This Work As Planned?
+
+- Try reloading front UI in your browser
+
+- Hmm, we get both versions intermittently. Not what we wanted!
+
+- Let's fix our virtual service.
+
+.exercise[ 
+```bash
+kubectl apply -f istio/dark-launch.yaml
+```
+]
+
+- Look at `istio/dark-launch.yaml`
+---
+
+## Privileged Access
+
+- Back in you browser - sign in as user `developer` (the `Sign in` button is at top right)
+
+- You should be consistently getting version 0.3
+
+- Sign out now.
+
+- Are you getting the older version again?
+
