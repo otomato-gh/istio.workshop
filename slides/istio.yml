@@ -25,4 +25,5 @@ chapters:
   - istio/progressive.md
   - istio/trafficmgmt.md
   - istio/ourappwithistio.md
+  - istio/darklaunch.md
   

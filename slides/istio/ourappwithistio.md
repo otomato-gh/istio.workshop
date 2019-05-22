@@ -60,3 +60,4 @@ kubectl get virtualservice -n staging
 
 - Don't update your existing `beth` deployment. We will launch darkly!
 ]
+

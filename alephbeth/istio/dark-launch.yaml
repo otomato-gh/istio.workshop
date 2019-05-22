@@ -1,0 +1,41 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: beth
+  namespace: games
+spec:
+  hosts:
+  - beth
+  http:
+  - match:
+    - headers:
+        cookie:
+          regex: "^(.*?;)?(user=developer)(;.*)?$"
+    route:
+      - destination:
+          host: beth
+          port:
+            number: 80
+          subset: v03
+  - route:
+    - destination:
+        host: beth
+        port:
+          number: 80
+        subset: v01
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: beth
+  namespace: games
+spec:
+  host: beth
+  subsets:
+    - name: v01
+      labels:
+        version: v01
+    - name: v03
+      labels:
+        version: v03
