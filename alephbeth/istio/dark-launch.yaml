@@ -3,7 +3,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: beth
-  namespace: games
+  namespace: staging
 spec:
   hosts:
   - beth
@@ -29,7 +29,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: beth
-  namespace: games
+  namespace: staging
 spec:
   host: beth
   subsets:
