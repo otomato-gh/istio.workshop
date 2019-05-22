@@ -24,4 +24,5 @@ chapters:
 - - istio/deployments.md
   - istio/progressive.md
   - istio/trafficmgmt.md
+  - istio/ourappwithistio.md
   

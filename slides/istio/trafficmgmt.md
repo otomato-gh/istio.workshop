@@ -127,5 +127,3 @@ spec:
       loadBalancer:
         simple: ROUND_ROBIN
 ```
-
----

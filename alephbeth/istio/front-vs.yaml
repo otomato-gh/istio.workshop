@@ -5,9 +5,7 @@ metadata:
   namespace: staging
 spec:
   hosts:
-  - "*"
-  gateways:
-  - alephbeth-gateway
+  - front
   http:
   - route:
     - destination:
