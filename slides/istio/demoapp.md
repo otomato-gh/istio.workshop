@@ -1,4 +1,4 @@
-# Deploying with Istio
+# Deploying the Application
 
 - Our purpose today is to learn how Istio allows us to implement *progressive delivery* techniques
 

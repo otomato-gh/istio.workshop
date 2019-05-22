@@ -22,4 +22,6 @@ chapters:
   - istio/grafana.md
   - istio/tracing.md
 - - istio/deployments.md
+  - istio/progressive.md
+  - istio/trafficmgmt.md
   
