@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: curl
+  name: curl
+spec:
+  containers:
+  - args:
+    - sleep
+    - "10000"
+    image: otomato/alpine-curl
+    imagePullPolicy: Always
+    name: curl

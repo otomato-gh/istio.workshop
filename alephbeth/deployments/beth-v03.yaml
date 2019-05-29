@@ -1,0 +1,19 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: beth-03
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: beth
+        version: v03
+    spec:
+      containers:
+      - name: beth
+        image: localhost:32000/beth:0.3
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
