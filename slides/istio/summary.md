@@ -16,16 +16,17 @@
 
 ## Wrap-up Exercise
 
-- Check out `wrapup` branch of istio.workshop
+- Check out `final` branch of istio.workshop
 
 .exercise[
 
 ```bash
-git checkout wrapup
+git checkout final
 ```
 ]
 
-- Build and push new version of `aleph`
+- Build and push a new version of `aleph`
+
 .exercise[
 
 ```bash
@@ -57,7 +58,7 @@ docker push ${REGISTRY}/aleph:0.2
 
 ---
 
-## Wrap Up Exercise
+## Check Status of the New Deployment
 
 - Generate load on aleph service
 
@@ -67,3 +68,31 @@ docker push ${REGISTRY}/aleph:0.2
 
 - Is the new version healthy?
 
+--
+
+- It's not! 
+
+- Remove the deployment for `aleph v02`
+
+
+---
+
+## Let's Fix This
+
+- Fix `aleph`. *Hint - the bug is in `version` method*
+
+- Build version 0.3 of `aleph`
+
+- Deploy the new version
+
+- Expose it as a canary. Increment by 20 percent each time, verifying that all the requests are successful.
+
+---
+
+## That's It for Today!
+
+- Thanks for attending!
+
+- Any future questions: Slack or `contact@otomato.link`
+
+- For more training : https://devopstrain.pro

@@ -3,9 +3,9 @@
 - In order to implement Progressive Delivery with Istio
   <br/> we need to use 2 Istio resources:
   
-  - Virtual Service
+  - [Virtual Service](https://istio.io/docs/reference/config/networking/v1alpha3/virtual-service/)
 
-  - Destination Rule
+  - [Destination Rule](https://istio.io/docs/reference/config/networking/v1alpha3/destination-rule/)
 
 ---
 
