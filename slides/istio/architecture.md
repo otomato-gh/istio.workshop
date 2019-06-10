@@ -60,7 +60,7 @@ Istio leverages Envoy’s many built-in features, for example:
   
 ## Citadel
 
-- creates a SPIFFE certificate and key pair for each of the existing and new service accounts
+- creates a [SPIFFE](https://spiffe.io/) certificate and key pair for each of the existing and new service accounts
 
 - stores the certificate and key pairs as Kubernetes secrets.
 
