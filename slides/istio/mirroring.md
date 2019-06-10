@@ -40,7 +40,7 @@ EOF
 
 - In UI check the version of `beth` you're now getting
 
-- Check the logs of `beth-03` pod to make sure it's getting all incoimng requests
+- Check the logs of `beth-03` pod to make sure it's getting all incoming requests
 
 .exercise[
 ```bash

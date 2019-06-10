@@ -55,15 +55,6 @@ kubectl apply -f istio/canary.yaml
 
 ---
 
-## Testing the canary
-
-- We don't want to test this through the UI, do we?
-
-- Let's run curl in a loop and see what we get
-
-
----
-
 ## Running a curl pod
 
 .exercise[

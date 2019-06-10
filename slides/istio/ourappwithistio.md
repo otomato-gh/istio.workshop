@@ -15,7 +15,7 @@ kubectl apply alephbeth/istio/front-vs.yaml -n staging
 
 Note: you won't notice a change. We're only accessing the service from outside of the cluster.
 
-Controlling traffic to the `front` service would require dfining a [Gateway](https://istio.io/docs/reference/config/networking/v1alpha3/gateway/) object. But that is out of the scope of our training today.
+Controlling traffic to the `front` service would require defining a [Gateway](https://istio.io/docs/reference/config/networking/v1alpha3/gateway/) object. But that is out of the scope of our training today.
 
 ---
 

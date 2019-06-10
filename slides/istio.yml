@@ -28,4 +28,4 @@ chapters:
   - istio/darklaunch.md
   - istio/mirroring.md
   - istio/canary.md
-  
+- - istio/summary.md

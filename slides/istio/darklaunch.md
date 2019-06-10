@@ -15,7 +15,7 @@
 version: v03
 ```
 
-- Don't forget to also update delpoyment name and image name
+- Don't forget to also update deployment name and image name
 
 - Deploy
 
