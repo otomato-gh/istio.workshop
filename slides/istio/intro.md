@@ -34,10 +34,14 @@
   ```bash
   git clone https://github.com/otomato-gh/istio.workshop.git 
   cd istio.workshop
-  ./prepare_vms/setup_microk8s.sh
+  ./prepare-vms/setup_microk8s.sh
+  # enter new shell for kubectl completion
+  sudo su - ${USER}
   ```
 
 ]
+
+- Choose 'No' when prompted for mutual TLS 
 
 - This will install a microk8s single-node cluster with Istio
 

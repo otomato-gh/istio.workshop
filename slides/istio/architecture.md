@@ -73,4 +73,4 @@ Istio leverages Envoy’s many built-in features, for example:
 
 - validates configuration
 
-- will abstract Istio from underlying platform (i.e Kubernetesß)
+- will abstract Istio from underlying platform (i.e Kubernetes)
