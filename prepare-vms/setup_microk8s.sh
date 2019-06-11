@@ -9,3 +9,5 @@ microk8s.enable istio
 microk8s.enable metrics-server
 # allow current user to access docker socket
 sudo setfacl -m user:${USER}:rw /var/run/docker.sock
+# allow istio pods to communicate
+sudo iptables -P FORWARD ACCEPT
