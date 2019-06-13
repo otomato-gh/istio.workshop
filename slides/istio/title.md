@@ -10,6 +10,9 @@ class: title, in-person
 *http://otomato.link*
 
 **Slides: @@SLIDES@@**
+
+*Slide-generation engine borrowed from [container.training](https://github.com/jpetazzo/container.training)*
+
 ]
 
 
