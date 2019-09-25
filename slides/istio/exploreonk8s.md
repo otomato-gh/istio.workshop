@@ -2,7 +2,7 @@
 
 - Istio on Kubernetes stores all data in ... Kubernetes
 
-- Istio installs 50+ [CRDs](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions)
+- Istio installs 20+ [CRDs](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions)
 
 - Kubernetes API serves and handles the storage of these custom resources
 
@@ -23,7 +23,7 @@
 --
 
 
-50 resource definitions! ( With mTLS that would've been 58 )
+23 resource definitions (Used to be 50+, but things are improving)
 
 ---
 ## Exploring Istio on K8s
