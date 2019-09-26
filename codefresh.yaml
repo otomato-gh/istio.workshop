@@ -10,6 +10,7 @@ steps:
     commands:
       - "apk add -U git"
       - "pip install PyYAML jinja2"
+      - "pwd && ls -la"
       - "cd slides && ./build.sh once"
       - "mv index.yaml.html index.html"
   Upload:
