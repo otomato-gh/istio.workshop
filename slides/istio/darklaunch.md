@@ -20,7 +20,7 @@ version: v03
 - Deploy
 
 ```bash
-kubectl apply -f  deployments/beth-v03.yaml
+kubectl apply -f  deployments/beth-v03.yaml -n staging
 ```
 ]
 
