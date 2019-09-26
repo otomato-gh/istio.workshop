@@ -1,0 +1,16 @@
+version: '1.0'
+steps:
+  BuildSlides:
+    image: python:2-alpine
+    commands:
+      - "apk add -U git"
+      - "pip install PyYAML jinja2"
+      - "cd slides && ./build.sh once"
+      - "mv index.yaml.html index.html"
+  Upload:
+    image: ictu/sshpass
+    commands:
+      - echo Running
+      - export FILES="index.html images *.js *.css *.png"
+      - "cd slides && sshpass -p ${{FTP_PASS}} scp -v -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp ${FILES} antweis1@ftp.antweiss.com:public_html/devopstrain/istio/"
+      
