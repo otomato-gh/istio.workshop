@@ -34,9 +34,9 @@
 
 class: pic
 
-## Mixer and its Adaptors
+## Mixer and its Adapters
 
-- Mixer is pluggable. Mixer Adaptors allow us to post to multiple backends:
+- Mixer is pluggable. Mixer Adapters allow us to post to multiple backends:
 
 ![Mixer](images/adapters.svg)
 
