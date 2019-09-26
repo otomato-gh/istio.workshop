@@ -59,7 +59,7 @@ kubectl apply -f istio/canary.yaml
 
 .exercise[
 ```bash
-kubectl create -f - <<EOF
+kubectl create -n staging -f - <<EOF
 apiVersion: v1
 kind: Pod
 metadata:  
