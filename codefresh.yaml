@@ -11,8 +11,7 @@ steps:
       - "apk add -U git"
       - "pip install PyYAML jinja2"
       - "cd istio.workshop/slides && ./build.sh once"
-      - "pwd && ls -la"
-      - "mv index.yaml.html index.html"
+      - "mv istio.yml.html index.html"
   Upload:
     image: ictu/sshpass
     commands:
