@@ -56,7 +56,7 @@ class: pic
 
   - **Prometheus**: for network telemetry
   - **Grafana**: to visualize Prometheus data
-  - **Servicegraph**: to visualize the connections between our services
+  - **Kiali**: to visualize the connections between our services
   - **Jaeger** (it's the service named `tracing`): to store and visualize distributed traces
   - **Zipkin**: another option to store and visualize distributed traces
 
