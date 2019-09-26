@@ -38,7 +38,7 @@ class: pic
 
 - Mixer is pluggable. Mixer Adaptors allow us to post to multiple backends:
 
-![Mixer](https://istio.io/docs/concepts/policies-and-telemetry/adapters.svg)
+![Mixer](images/adapters.svg)
 
 ---
 
