@@ -79,7 +79,7 @@ kubectl get svc grafana  -n istio-system  -o jsonpath='{ .spec.ports[0].nodePort
 ```
 
 - Do the same for `kiali` and `tracing` services
-- Browse to http://your-node-ip/service-port (for servicegraph add /force/forcegraph.html)
+- Browse to http://your-node-ip:3XXXX (replace with actual service port) 
     
 ]
 
