@@ -1,5 +1,10 @@
 version: '1.0'
 steps:
+  MainClone:
+    title: Cloning main repository...
+    type: git-clone
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
+    revision: '${{CF_REVISION}}'
   BuildSlides:
     image: python:2-alpine
     commands:
