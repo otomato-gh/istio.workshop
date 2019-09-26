@@ -14,7 +14,7 @@
 
 .exercise[
 ```bash
-kubectl apply -f-n staging - <<EOF
+kubectl apply -n staging -f - <<EOF
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
