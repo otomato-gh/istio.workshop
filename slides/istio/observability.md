@@ -68,7 +68,7 @@ class: pic
 - Let's expose Jaeger, Grafana and Servicegraph on NodePort
 
 ```bash
-for service in tracing grafana servicegraph; do
+for service in tracing grafana kiali; do
     kubectl patch svc -n istio-sytem $service --type='json' -p '[{"op":"replace","path":"/spec/type","value":"NodePort"}]'
 done;
 ```
@@ -78,7 +78,7 @@ done;
 kubectl get svc grafana  -n istio-system  -o jsonpath='{ .spec.ports[0].nodePort }{"\n"}'
 ```
 
-- Do the same for `servicegraph` and `tracing` services
+- Do the same for `kiali` and `tracing` services
 - Browse to http://your-node-ip/service-port (for servicegraph add /force/forcegraph.html)
     
 ]
