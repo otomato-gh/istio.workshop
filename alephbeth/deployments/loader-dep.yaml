@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: loader
 spec:
+  selector:
+    matchLabels:
+      app: loader
   template:
     metadata:
       labels:

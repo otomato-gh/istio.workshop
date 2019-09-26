@@ -5,6 +5,9 @@ metadata:
   name: aleph-v03
   namespace: games
 spec:
+  selector:
+    matchLabels:
+      app: aleph
   replicas: 2
   template:
     metadata:

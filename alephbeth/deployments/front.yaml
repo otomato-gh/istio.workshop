@@ -4,6 +4,9 @@ kind: Deployment
 metadata:
   name: front
 spec:
+  selector:
+    matchLabels:
+      app: front
   replicas: 1
   template:
     metadata:

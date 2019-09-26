@@ -4,6 +4,9 @@ kind: Deployment
 metadata:
   name: aleph-v04
 spec:
+  selector:
+    matchLabels:
+      app: aleph
   replicas: 2
   template:
     metadata:

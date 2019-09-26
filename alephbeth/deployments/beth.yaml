@@ -4,6 +4,9 @@ kind: Deployment
 metadata:
   name: beth
 spec:
+  selector:
+    matchLabels:
+      app: beth
   replicas: 1
   template:
     metadata:
