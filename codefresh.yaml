@@ -10,13 +10,12 @@ steps:
     commands:
       - "apk add -U git"
       - "pip install PyYAML jinja2"
-      - "pwd && ls -la"
-      - "cd slides && ./build.sh once"
+      - "cd istio.workshop/slides && ./build.sh once"
       - "mv index.yaml.html index.html"
   Upload:
     image: ictu/sshpass
     commands:
       - echo Running
       - export FILES="index.html images *.js *.css *.png"
-      - "cd slides && sshpass -p ${{FTP_PASS}} scp -v -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp ${FILES} antweis1@ftp.antweiss.com:public_html/devopstrain/istio/"
+      - "cd istio.workshop/slides && sshpass -p ${{FTP_PASS}} scp -v -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp ${FILES} antweis1@ftp.antweiss.com:public_html/devopstrain/istio/"
       
