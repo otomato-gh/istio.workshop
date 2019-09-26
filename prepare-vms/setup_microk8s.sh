@@ -6,7 +6,10 @@ sudo snap install kubectl --classic
 echo "source <(kubectl completion bash)" >> ~/.bashrc
 sudo microk8s.start
 sudo microk8s.enable istio
+sudo chown -R $USER $HOME/.kube
 sudo microk8s.kubectl config view --raw > $HOME/.kube/config
+sudo chown $USER $HOME/.kube/config
+#wait before enabling metrics server
 sleep 5
 sudo microk8s.enable metrics-server
 # allow current user to access docker socket
