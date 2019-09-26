@@ -9,7 +9,7 @@
 .exercise[
 
 ```bash
-kubectl apply alephbeth/istio/front-vs.yaml -n staging
+kubectl apply -f alephbeth/istio/front-vs.yaml -n staging
 ```
 ]
 
@@ -29,8 +29,8 @@ Controlling traffic to the `front` service would require defining a [Gateway](ht
 - Apply them to your cluster
 
 ```bash
-kubectl apply alephbeth/istio/aleph-vs.yaml -n staging
-kubectl apply alephbeth/istio/beth-vs.yaml -n staging
+kubectl apply -f alephbeth/istio/aleph-vs.yaml -n staging
+kubectl apply -f alephbeth/istio/beth-vs.yaml -n staging
 ```
 
 - Verify
