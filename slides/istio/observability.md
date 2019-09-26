@@ -69,7 +69,7 @@ class: pic
 
 ```bash
 for service in tracing grafana kiali; do
-    kubectl patch svc -n istio-sytem $service --type='json' -p '[{"op":"replace","path":"/spec/type","value":"NodePort"}]'
+    kubectl patch svc -n istio-system $service --type='json' -p '[{"op":"replace","path":"/spec/type","value":"NodePort"}]'
 done;
 ```
 - Get the ports for the exposed services:
