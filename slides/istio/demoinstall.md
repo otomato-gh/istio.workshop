@@ -10,7 +10,7 @@
 
   - Jaeger - for tracing (see the istio-tracing-.. pod)
 
-  - Servicegraph - to graph service connections
+  - Kiali - the Istio UI 
 
 ---
 ## The mixer pods
