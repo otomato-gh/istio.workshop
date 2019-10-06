@@ -1,7 +1,7 @@
 #! /bin/bash -f
 #install docker (for building images)
 sudo snap install docker
-sudo snap install microk8s --classic                                                                                                         
+sudo snap install microk8s --classic --edge                                                                                                        
 sudo snap install kubectl --classic
 echo "source <(kubectl completion bash)" >> ~/.bashrc
 sudo microk8s.start
