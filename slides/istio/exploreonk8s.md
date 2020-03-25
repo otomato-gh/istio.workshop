@@ -8,6 +8,8 @@
 
 - That means we communicate with Istio control plane via the K8s API
 
+- We can use the `istioctl` utility or good old `kubectl`
+
 ---
 ## Exploring Istio on K8s
 .exercise[
@@ -23,7 +25,7 @@
 --
 
 
-23 resource definitions (Used to be 50+, but things are improving)
+26 resource definitions (Used to be 50+, but things are improving)
 
 ---
 ## Exploring Istio on K8s
@@ -56,5 +58,4 @@ kubectl get pod -n istio-system
 
 - Now we're talking!
 
-- But why so many?!
 

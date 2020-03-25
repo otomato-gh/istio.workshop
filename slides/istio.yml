@@ -11,6 +11,7 @@ chapters:
 #- istio/layout.md
 - istio/title.md
 - istio/intro.md
+- istio/install.md
 - istio/toc.md
 - - istio/servicemesh.md
 - - istio/architecture.md

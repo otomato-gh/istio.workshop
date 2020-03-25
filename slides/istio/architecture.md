@@ -1,7 +1,7 @@
 class: pic
 # Istio Architecture
 
-![architecture](https://istio.io/docs/concepts/what-is-istio/arch.svg)
+![architecture](https://istio.io/docs/ops/deployment/architecture/arch.svg)
 
 ---
 ## Envoy
@@ -36,19 +36,6 @@ Istio leverages Envoy’s many built-in features, for example:
   - Or in our case : networking!
 ---
 
-## Mixer
- 
- Mixer is a platform-independent component. 
-
- - Enforces access control and usage policies
-
- - Collects telemetry data from the Envoy proxy and other Istio components.
-
- - The proxy extracts request level attributes, and sends them to Mixer for evaluation. 
-
- Mixer includes a flexible plugin model. 
----
-
 ## Pilot
  
   - Service discovery for the Envoy proxies
@@ -56,6 +43,8 @@ Istio leverages Envoy’s many built-in features, for example:
   - Traffic management capabilities for intelligent routing (e.g., A/B tests, canary rollouts, etc.)
 
   - Resiliency (timeouts, retries, circuit breakers, etc.).
+
+  ![pilot](https://istio.io/docs/ops/deployment/architecture/discovery.svg)
 ---
   
 ## Citadel
@@ -73,4 +62,18 @@ Istio leverages Envoy’s many built-in features, for example:
 
 - validates configuration
 
-- will abstract Istio from underlying platform (i.e Kubernetes)
+- Abstracts Istio from underlying platform (i.e Kubernetes)
+---
+
+## Once there was a Mixer
+ 
+ Mixer used to be the main performance bottleneck of Istio 
+
+ - Managed policy definition and enforcement.
+   - Now this happens in **istiod**
+
+ - Collected telemetry data. 
+   - Now this is done **in proxy**.
+
+ - Provided a flexible plugin model. 
+   - Now replaced by [Envoy WASM extensions](https://istio.io/blog/2020/wasm-announce/)

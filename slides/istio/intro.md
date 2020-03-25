@@ -41,9 +41,10 @@
 
 ]
 
-- Choose 'No' when prompted for mutual TLS 
+- This will install a **microk8s**  single-node cluster 
+- **microk8s** can install Istio as an add-on: `microk8s.enable istio`
 
-- This will install a microk8s single-node cluster with Istio
+  But it's an older Istio version, so we'll install one ourselves.
 
 ---
 
@@ -65,5 +66,4 @@ microk8s.enable istio
   - kube-dashboard
   - and of course: Istio
   - For more:  `microk8s.enable --help`
-
 

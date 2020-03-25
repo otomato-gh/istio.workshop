@@ -1,6 +1,6 @@
 # The Demo Installation
 
-- microk8s installs the so-called _evaluation_ or _demo_ install of Istio
+- we've installed the so-called _evaluation_ or _demo_ install of Istio
 
 - It includes additional components:
 
@@ -13,44 +13,39 @@
   - Kiali - the Istio UI 
 
 ---
-## The mixer pods
+## The gateways
 
-- We can see pilot, galley, citadel... But where is the mixer?
+- The demo bundle also comes with *ingressgateway* and *egressgateway* pods
 
-.exercise[
-```bash
-kubectl get pod -n istio-system -l=istio=mixer
-```
-]
+- These allow controlling north-south traffic
 
-- Mixer has 2 functions: defining traffic policy and exposing traffic telemetry. 
+- They aren't default service mesh components
 
-- Therefore - 2 pods.
+  - linkerd or Consul Connect don't have them
+
 
 ---
 ## The sidecars
 
 - Now, where are the Envoys?
 
-- Let's look at the Pilot pod:
+- Let's look at the containers in the prometheus pod:
 
 .exercise[
 ```bash
-kubectl describe pod -n istio-system -l istio=pilot
+kubectl get pod -n istio-system -l app=prometheus \
+ -ojsonpath="{ range .items[\*].spec.containers[\*]} Name: {@.name} Image: {@.image} ;{ end }" |  tr ";" "\n"
 ```
 ]
 --
 
 ```
-Containers:
-  discovery:
-...
-    Image:         docker.io/istio/pilot:1.0.5
-...
-  istio-proxy:
-...
-    Image:         docker.io/istio/proxyv2:1.0.5
+
+Name: prometheus Image: docker.io/prom/prometheus:v2.15.1
+
+Name: istio-proxy Image: docker.io/istio/proxyv2:1.5.0 <-- !!!
 ```
+
 ---
 
 ### The sidecars
