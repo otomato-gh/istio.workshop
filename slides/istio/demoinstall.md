@@ -21,7 +21,7 @@
 
 - They aren't default service mesh components
 
-  - linkerd or Consul Connect don't have them
+  - For example: linkerd or Consul Connect don't have them
 
 
 ---
@@ -34,17 +34,16 @@
 .exercise[
 ```bash
 kubectl get pod -n istio-system -l app=prometheus \
- -ojsonpath="{ range .items[\*].spec.containers[\*]} Name: {@.name} Image: {@.image} ;{ end }" |  tr ";" "\n"
+ -ojsonpath="{ range .items[*].spec.containers[*]} Name: {@.name} Image: {@.image} ;{ end }" |  tr ";" "\n"
 ```
 ]
+
 --
 
-```
+`Name: prometheus Image: docker.io/prom/prometheus:v2.15.1`
 
-Name: prometheus Image: docker.io/prom/prometheus:v2.15.1
+`Name: istio-proxy Image: docker.io/istio/proxyv2:1.5.0 `   <- **this is Envoy!**
 
-Name: istio-proxy Image: docker.io/istio/proxyv2:1.5.0 <-- !!!
-```
 
 ---
 

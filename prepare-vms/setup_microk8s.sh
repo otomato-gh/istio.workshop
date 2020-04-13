@@ -10,7 +10,6 @@ sudo iptables -P FORWARD ACCEPT
 # wait before enabling DNS
 sleep 5
 sudo microk8s.enable dns
-sudo microk8s.enable istio
 sudo chown -R $USER $HOME/.kube
 sudo microk8s.kubectl config view --raw > $HOME/.kube/config
 sudo chown $USER $HOME/.kube/config
