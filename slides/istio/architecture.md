@@ -23,7 +23,7 @@ Istio leverages Envoy’s many built-in features, for example:
 ---
 
 ## The Sidecar Pattern
-- The 'sidecar' is a an assistant container in the pod
+- The 'sidecar' is an assistant container in the pod
 
 - Think Batman's Robin
 

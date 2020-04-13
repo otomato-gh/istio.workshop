@@ -1,6 +1,6 @@
 # Monitoring with Istio
 
-- All request metrics are sent by Mixer to Prometheus and visualized with Grafana dashboards
+- All request metrics are directly exported by the Envoy proxy since Istio 1.5. The telemetry component is implemented as a Proxy-wasm plugin. Metrics  are exposed to Prometheus and visualized with Grafana dashboards
 
 .exercise[
 - Browse to `istio-service-dashboard` in Grafana

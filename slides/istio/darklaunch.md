@@ -15,7 +15,7 @@
 version: v03
 ```
 
-- Don't forget to also update deployment name and image name
+- Don't forget to also update deployment name to **beth-v03** and image tag to **0.3**
 
 - Deploy
 

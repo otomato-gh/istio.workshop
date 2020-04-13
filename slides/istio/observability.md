@@ -28,17 +28,9 @@
 
 *Answer*:
 
-- Mixer is responsible for collecting and shipping telemetry 
+- Mixer *used to be* responsible for collecting and shipping telemetry
 
----
-
-class: pic
-
-## Mixer and its Adapters
-
-- Mixer is pluggable. Mixer Adapters allow us to post to multiple backends:
-
-![Mixer](images/adapters.svg)
+- Now - telemetry is collected directly from the Envoy proxies
 
 ---
 
@@ -58,14 +50,13 @@ class: pic
   - **Grafana**: to visualize Prometheus data
   - **Kiali**: to visualize the connections between our services
   - **Jaeger** (it's the service named `tracing`): to store and visualize distributed traces
-  - **Zipkin**: another option to store and visualize distributed traces
 
 ---
 
 ## Explore the Telemetry
 
 .exercise[
-- Let's expose Jaeger, Grafana and Servicegraph on NodePort
+- Let's expose Jaeger, Grafana and Kiali on NodePort
 
 ```bash
 for service in tracing grafana kiali; do

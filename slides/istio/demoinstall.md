@@ -79,16 +79,35 @@ kubectl describe pod -l=app=httpbin
 
 - There should be some magic somewhere!
 
-- Remember when we looked at Istio pods there was that *sidecar-injector* pod?
-
-- So why didn't it work?
+- So why doesn't it work?
 
 ---
 
 ## The sidecar injection
-
 From Istio docs:
-"When you deploy your application using kubectl apply, the Istio sidecar injector will automatically inject Envoy containers into your application pods if they are started in namespaces labeled with **istio-injection=enabled**."
+
+Sidecars can be automatically added to applicable Kubernetes pods using a mutating webhook admission controller provided by Istio.
+When you set the **istio-injection=enabled** label on a namespace and the injection webhook is enabled, any new pods that are created in that namespace will automatically have a sidecar added to them.
+
+Do we have the *mutating webhook* in our cluster?
+
+.exercise[
+  ```bash
+  kubectl get MutatingWebhookConfiguration
+  ```
+]
+
+--
+
+```
+NAME                     WEBHOOKS   AGE
+istio-sidecar-injector   1          ..    
+```
+
+Here it is!
+
+---
+## The sidecar injection
 
 - Let's label our namespace and redeploy:
 
@@ -100,7 +119,7 @@ kubectl delete pod -l=app=httpbin
 ]
 --
 
-- Recreating that pod took a whole lotta time, didn't it?!
+- Recreating that pod took a bit too long, didn't it?!
 
 ---
 
