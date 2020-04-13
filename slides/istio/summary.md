@@ -93,6 +93,6 @@ docker push ${REGISTRY}/aleph:0.2
 
 - Thanks for attending!
 
-- Any future questions: Slack or `contact@otomato.link`
+- Any future questions: Slack or `contact@otomato.io`
 
 - For more training : https://devopstrain.pro
